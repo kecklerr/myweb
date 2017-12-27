@@ -1,4 +1,5 @@
 *stop the myweb docker image if running*
+
 #docker stop myweb
 
 *build the myweb docker image with the new code you wrote*
