@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myweb
+  namespace: myweb
+spec:
+  project: myweb
+  source:
+    repoURL: 'https://git.kecklers.com/rkeckler/dockerhttp.git'
+    path: myweb
+    targetRevision: HEAD
+    directory:
+      recurse: true
+      jsonnet: {}
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: myweb
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
