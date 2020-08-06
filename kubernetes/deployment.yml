@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myweb
+  namespace: myweb
+  labels:
+    environment: dev
+    apps: myweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      apps: myweb
+  template:
+    metadata:
+      labels:
+        apps: myweb
+    spec:
+      containers:
+        - name: myweb
+          image: git.kecklers.com:6789/rkeckler/dockerhttp/myweb:latest
+          ports:
+            - containerPort: 80
